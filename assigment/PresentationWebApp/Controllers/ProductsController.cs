@@ -26,6 +26,11 @@ namespace PresentationWebApp.Controllers
         }
         public IActionResult Index()
         {
+
+            var listOfCategories = _categoriesService.GetCategories();
+            ViewBag.Categories = listOfCategories; 
+
+
             var list = _productsService.GetProducts();
 
             return View(list);
@@ -105,7 +110,7 @@ namespace PresentationWebApp.Controllers
             }
             return RedirectToAction("Index");
         }
-         [HttpPost]
+        [HttpPost]
         public IActionResult Search(string keyword)
         {
             var list = _productsService.GetProducts(keyword).ToList();

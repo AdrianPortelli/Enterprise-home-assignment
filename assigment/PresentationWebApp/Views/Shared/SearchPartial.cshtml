@@ -1,11 +1,11 @@
-﻿<form class="form-inline" method="post" action="/Products/Search">
-    <div class="form-group" mb-2>
-        <label  class="col-sm-2 col-form-label">Search:</label>
-    </div>
-    <div class="fprm-group mx-sm-3 mb-2">
-        <input type="text" class="form-control" name="keyword" placeholder="Type your keyword here">
-    </div>
-    
-    <button type="submit" class="btn btn-primary mb-2">Search</button>
-    
-</form>
+﻿
+<div class="row mb-3">
+    <form class="form-inline" method="post" action="/Products/Search">   
+        <div class="form-group mx-sm-3 ">
+            <label class="form-label mr-3">Search Catergory:</label>
+            <input type="text" class="form-control mr-3" name="keyword" placeholder="Type your keyword here">
+        </div>
+        <button type="submit" class="btn btn-primary mr-3">Search</button>
+        <a href="/Products" class="btn btn-primary">Clear Filter</a>
+    </form>
+</div>

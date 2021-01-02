@@ -112,7 +112,7 @@ namespace ShoppingCart.Application.Services
         {
 
             //to be implemented using autoMapper
-            var products = _productsRepo.GetProducts().Where(x=>x.Description.Contains(keyword) || x.Name.Contains(keyword)).ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider);
+            var products = _productsRepo.GetProducts().Where(x=>x.Category.Name.Contains(keyword)).ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider);
             return products;
 
             /*
