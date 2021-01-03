@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PresentationWebApp.Models;
 using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
+using ShoppingCart.Domain.Models;
 
 namespace PresentationWebApp.Controllers
 {
@@ -24,7 +26,7 @@ namespace PresentationWebApp.Controllers
             _categoriesService = categoriesService;
             _env = env;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int pageNumber = 1)
         {
 
             var listOfCategories = _categoriesService.GetCategories();
@@ -33,7 +35,7 @@ namespace PresentationWebApp.Controllers
 
             var list = _productsService.GetProducts();
 
-            return View(list);
+            return View(await PaginatedList<ProductViewModel>.CreateAsync(_productsService.GetProducts(),pageNumber,10));
         }
 
         public IActionResult Details(Guid id)
@@ -111,10 +113,10 @@ namespace PresentationWebApp.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public IActionResult Search(string keyword)
+        public async Task<IActionResult> Search(string keyword,int pageNumber = 1)
         {
             var list = _productsService.GetProducts(keyword).ToList();
-            return View("Index",list);
+            return View("Index",await PaginatedList<ProductViewModel>.CreateAsync(_productsService.GetProducts(keyword), pageNumber, 10));
         }
 
     }

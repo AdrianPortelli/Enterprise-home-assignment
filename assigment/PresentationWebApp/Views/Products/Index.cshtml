@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShoppingCart.Application.ViewModels.ProductViewModel>
+﻿@model PaginatedList<ShoppingCart.Application.ViewModels.ProductViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,7 +16,7 @@
     <div class="row">
         @foreach (var p in Model)
         {
-            <div class="col-4">
+            <div class="col-4 mb-3">
                 <div class="card" style="width: 18rem;">
                     <img src="@p.ImageUrl" class="card-img-top" height="350" alt="...">
                     <div class="card-body">
@@ -33,6 +33,22 @@
                 </div>
             </div>
         }
+    </div>
+    <div class="row">
+        @{
+            var prevDisable = !Model.PreviousPage ? "disabled" : "";
+            var nextDisable = !Model.NextPage ? "disabled" : "";
+        }
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex-1)"
+           class="btn btn-default @prevDisable">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex+1)"
+           class="btn btn-default @nextDisable">
+            Next
+        </a>
     </div>
 </div>
 
