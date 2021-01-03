@@ -86,11 +86,11 @@ namespace PresentationWebApp.Controllers
 
                 _productsService.AddProduct(data);
 
-                TempData["feedback"] = "Product was added successfully";
+                ViewData["feedback"] = "Product was added successfully";
             }catch(Exception ex)
             {
                 //log error
-                TempData["warning"] = "Product was not added";
+                ViewData["warning"] = "Product was not added";
             }
             var listOfCategories = _categoriesService.GetCategories();
             ViewBag.Categories = listOfCategories;
