@@ -1,0 +1,15 @@
+﻿<div class="row mb-3">
+    @if (ViewData["feedback"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewData["feedback"]
+        </div>
+    }
+
+    @if (ViewData["warning"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewData["warning"]
+        </div>
+    }
+</div>

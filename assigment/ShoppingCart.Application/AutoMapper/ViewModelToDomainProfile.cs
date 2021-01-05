@@ -18,6 +18,12 @@ namespace ShoppingCart.Application.AutoMapper
             CreateMap<CategoryViewModel, Category>();
 
             CreateMap<MemberViewModel, Member>();
+
+            CreateMap<OrderDetailsViewModel, OrderDetails>().ForMember(x => x.Order, opt => opt.Ignore());
+
+            CreateMap<OrderViewModel, Order>();
+
+           
         }
     }
 }

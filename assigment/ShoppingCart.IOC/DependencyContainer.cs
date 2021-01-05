@@ -44,6 +44,8 @@ namespace ShoppingCart.IOC
             services.AddScoped<IMembersRepository, MembersRepository>();
             services.AddScoped<IMembersService, MembersService>();
 
+            
+
             //move Intitialization of shoppingcartDBContext to here and refine the dependencies
 
             services.AddAutoMapper(typeof(AutoMapperConfiguration));

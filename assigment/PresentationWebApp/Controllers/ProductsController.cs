@@ -102,13 +102,14 @@ namespace PresentationWebApp.Controllers
         {
             try
             {
+                ViewData["feedback"] = "Product was deleted";
                 _productsService.DeleteProduct(id);
-                TempData["feedback"] = "Product was deleted";
+             
             }
             catch(Exception ex)
             {
                 //log your error
-                TempData["warning"] = "Product was not deleted";//Change from viewData to tempData
+                ViewData["warning"] = "Product was not deleted";//Change from viewData to tempData
             }
             return RedirectToAction("Index");
         }
