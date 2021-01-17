@@ -120,5 +120,7 @@ namespace PresentationWebApp.Controllers
             return View("Index",await PaginatedList<ProductViewModel>.CreateAsync(_productsService.GetProducts(keyword), pageNumber, 10));
         }
 
+        
+
     }
 }

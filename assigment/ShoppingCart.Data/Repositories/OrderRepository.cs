@@ -21,9 +21,11 @@ namespace ShoppingCart.Data.Repositories
             _context.SaveChanges();
         }
 
-        public IQueryable<Order> GetOrder()
+        public void AddOrderDetails(OrderDetails od)
         {
-            return _context.Orders;
+            _context.OrderDetails.Add(od);
+            _context.SaveChanges();
+
         }
     }
 }

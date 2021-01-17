@@ -23,16 +23,10 @@ namespace ShoppingCart.Application.Services
             _ordersRepo = orderRepository;
 
         }
-        public void AddOrder(OrderViewModel o)
-        {
-            _ordersRepo.AddOrder(_mapper.Map<Order>(o));
-        }
 
-        public IQueryable<OrderViewModel> GetOrder()
+        public void CheckOut(string email)
         {
-            var order = _ordersRepo.GetOrder().ProjectTo<OrderViewModel>(_mapper.ConfigurationProvider);
-            return order;
+            throw new NotImplementedException();
         }
-        
     }
 }
